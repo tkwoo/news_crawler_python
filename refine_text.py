@@ -21,7 +21,8 @@ def clean_text(text):
     cleaned_text = cleaned_text.replace('\\n', '')
     cleaned_text = cleaned_text.replace('\\t', '')
     cleaned_text = cleaned_text.replace('\\r', '')
-    cleaned_text = re.sub('[\{\}\[\]\/?;:|\)*~`!^\-_+<>@\#$%&\\\=\(\'\"”“’‘→…·《,∼》]',
+    cleaned_text = re.sub('[一-龥]', '', cleaned_text)
+    cleaned_text = re.sub('[\{\}\[\]\/?;:|\)*~`!^\-_+<>@\#$%&\\\=\(\'\"”“’‘→…·《,∼》㈜]',
                           '', cleaned_text) # remove special
     # cleaned_text = cleaned_text.replace(',', '\n')
     cleaned_text = cleaned_text.replace('. ', '\n')
