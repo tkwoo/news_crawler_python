@@ -1,6 +1,7 @@
-from bs4 import BeautifulSoup
-import urllib.request
- 
+from bs4 import BeautifulSoup # html parsing
+import urllib.request # HTTP request, response
+
+
 # 출력 파일 명
 OUTPUT_FILE_NAME = 'output.txt'
 # 긁어 올 URL

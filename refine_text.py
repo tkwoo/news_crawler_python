@@ -16,10 +16,22 @@ else:
  
 # 클리닝 함수
 def clean_text(text):
-    cleaned_text = re.sub('[a-zA-Z]', '', text)
-    cleaned_text = re.sub('[\{\}\[\]\/?.,;:|\)*~`!^\-_+<>@\#$%&\\\=\(\'\"]',
-                          '', cleaned_text)
-    return cleaned_text
+    # cleaned_text = re.sub('[a-zA-Z]', '', text) # remove eng
+    cleaned_text = text.lower()
+    cleaned_text = cleaned_text.replace('\\n', '')
+    cleaned_text = cleaned_text.replace('\\t', '')
+    cleaned_text = re.sub('[\{\}\[\]\/?;:|\)*~`!^\-_+<>@\#$%&\\\=\(\'\"”“’‘→…]',
+                          '', cleaned_text) # remove special
+    cleaned_text = cleaned_text.replace(',', '\n')
+    cleaned_text = cleaned_text.replace('.', '\n')
+    list_text = cleaned_text.split('\n')
+    result = ''
+    for text in list_text:
+        if len(text) < 2:
+            continue
+        text = text if text[0]!=' ' else text[1:]
+        result = result + text + '\n'
+    return result
     
  
 # 메인 함수
