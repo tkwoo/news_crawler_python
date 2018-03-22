@@ -16,7 +16,7 @@ def segment_word(sent):
 def build_corpus(text):
     sents = text.split('\n')
     # print (sents[0:10])
-    fout = open('corpus.txt', 'w', 'utf-8')
+    fout = open('corpus.txt', 'w')
     for sent in sents:
         if sent is not None:
             if len(sent) == 0:
