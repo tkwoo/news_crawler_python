@@ -16,20 +16,25 @@ def segment_word(sent):
 def build_corpus(text):
     sents = text.split('\n')
     # print (sents[0:10])
-    
+    fout = open('corpus.txt', 'w', 'utf-8')
     for sent in sents:
         if sent is not None:
             if len(sent) == 0:
                 continue
             words = segment_word(sent)
-            if len(words) < 10:
-                print (words)
+            if words[-1] == 'com':
+                continue
+            elif len(words) < 2:
+                continue
+            if words[0] == 'titlestart':
+                words = words[1:-2]
+            fout.write(" ".join(words) + "\n")
             # elif len(words) > 50:
             #     print (words)
-
+    fout.close()
 
 def main():
-    fIn = open('./job_cleaned.txt', 'r')
+    fIn = open('./job_1500_cleaned.txt', 'r')
     text = fIn.read()
     build_corpus(text)
 
