@@ -33,9 +33,13 @@ def get_link_from_news_title(page_num, URL, output_file):
 def get_text(URL, output_file):
     source_code_from_url = urllib.request.urlopen(URL)
     soup = BeautifulSoup(source_code_from_url, 'lxml', from_encoding='utf-8')
+    print (soup.title.string)
+    output_file.write('. [titlestart%stitleend]. '%soup.title.string)
     content_of_article = soup.select('div.article_txt')
-    for item in content_of_article:
-        string_item = str(item.find_all(text=True))
+
+    for idx, item in enumerate(content_of_article):
+        # print (item)
+        string_item = str(item.find_all(text=True, recursive=False))
         output_file.write(string_item)
  
  

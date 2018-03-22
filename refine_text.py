@@ -20,16 +20,18 @@ def clean_text(text):
     cleaned_text = text.lower()
     cleaned_text = cleaned_text.replace('\\n', '')
     cleaned_text = cleaned_text.replace('\\t', '')
-    cleaned_text = re.sub('[\{\}\[\]\/?;:|\)*~`!^\-_+<>@\#$%&\\\=\(\'\"”“’‘→…]',
+    cleaned_text = cleaned_text.replace('\\r', '')
+    cleaned_text = re.sub('[\{\}\[\]\/?;:|\)*~`!^\-_+<>@\#$%&\\\=\(\'\"”“’‘→…·《,∼》]',
                           '', cleaned_text) # remove special
-    cleaned_text = cleaned_text.replace(',', '\n')
-    cleaned_text = cleaned_text.replace('.', '\n')
+    # cleaned_text = cleaned_text.replace(',', '\n')
+    cleaned_text = cleaned_text.replace('. ', '\n')
     list_text = cleaned_text.split('\n')
     result = ''
     for text in list_text:
-        if len(text) < 2:
+        if len(text) < 10 or len(text.split(' ')) < 3:
             continue
         text = text if text[0]!=' ' else text[1:]
+        text = text.strip()
         result = result + text + '\n'
     return result
     
