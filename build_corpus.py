@@ -17,13 +17,15 @@ def build_corpus(text):
     sents = text.split('\n')
     # print (sents[0:10])
     
-    for sent in sents[:10]:
+    for sent in sents:
         if sent is not None:
             if len(sent) == 0:
                 continue
             words = segment_word(sent)
-            print (len(words))
-
+            if len(words) < 10:
+                print (words)
+            # elif len(words) > 50:
+            #     print (words)
 
 
 def main():
