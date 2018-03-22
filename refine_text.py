@@ -10,7 +10,7 @@ args = parser.parse_args()
 # 입,출력 파일명
 INPUT_FILE_NAME = args.in_file #'output.txt'
 if args.out_file == None:
-    OUTPUT_FILE_NAME = '%s_cleand.txt'%INPUT_FILE_NAME.split('.')[0]
+    OUTPUT_FILE_NAME = '%s_cleaned.txt'%INPUT_FILE_NAME.split('.')[0]
 else:
     OUTPUT_FILE_NAME = args.out_file
  
@@ -35,7 +35,7 @@ def clean_text(text):
         result = result + text + '\n'
     return result
     
- 
+
 # 메인 함수
 def main():
     read_file = open(INPUT_FILE_NAME, 'r')
